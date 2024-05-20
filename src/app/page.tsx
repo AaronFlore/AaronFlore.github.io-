@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { TypewriterEffectSmooth } from "./components/typewriter";
 import { WavyBackground } from "./components/wavy";
 import { EvervaultCard, Icon } from "./components/encrypt-card";
 import { MultiStepLoader as Loader } from "./components/step-loader";
@@ -96,9 +97,15 @@ export default function Home() {
           </button>
         )}
       </div>
-      <span className="inline-flex h-full w-full cursor-pointer items-center justify-center mt-64 mb-4 bg-slate-950 px-6 py-3 text-5xl font-medium text-white backdrop-blur-3xl">
-        Projects
-      </span>
+      <div className="flex items-center justify-center h-full mt-64">
+        <TypewriterEffectSmooth
+          words={[
+            {
+              text: "Projects",
+            },
+          ]}
+        />
+      </div>
       <div className="flex justify-center mt-4 mb-16">
         <a
           href="https://lyrichero.onrender.com/"
@@ -110,7 +117,11 @@ export default function Home() {
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
-            <EvervaultCard text="LyricHero" />
+            <EvervaultCard
+              text="LyricHero"
+              gradientFrom="from-purple-500"
+              gradientTo="to-pink-700"
+            />
             <h2 className="dark:text-white text-black mt-4 text-sm font-light">
               In this web app, users type along to the synchronized lyrics of
               songs for a fun way to practice typing speed and accuracy.
@@ -135,7 +146,11 @@ export default function Home() {
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
-            <EvervaultCard text="Ascot" />
+            <EvervaultCard
+              text="Ascot"
+              gradientFrom="from-green-500"
+              gradientTo="to-blue-700"
+            />
             <h2 className="dark:text-white text-black mt-4 text-sm font-light">
               This mobile app allows volunteers and researchers to track the
               survivability of 400 trees in LA's Ascot Hills Park via QR codes,
@@ -164,7 +179,11 @@ export default function Home() {
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
             <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
-            <EvervaultCard text="LLaMA 2 Finetuning" />
+            <EvervaultCard
+              text="LLaMA 2 Finetuning"
+              gradientFrom="from-red-500"
+              gradientTo="to-yellow-700"
+            />
             <h2 className="dark:text-white text-black mt-4 text-sm font-light">
               This project demonstrates how to fine-tune LLaMA 2 for a specific
               use case, such as summarizing user reviews for amazon products
