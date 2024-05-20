@@ -1,113 +1,197 @@
-import Image from "next/image";
+"use client";
+import React, { useState } from "react";
+import { WavyBackground } from "./components/wavy";
+import { EvervaultCard, Icon } from "./components/encrypt-card";
+import { MultiStepLoader as Loader } from "./components/step-loader";
+import { IconSquareRoundedX } from "@tabler/icons-react";
+import { AnimatedTooltip } from "./components/tooltip";
+
+const loadingStates = [
+  {
+    text: "Aug 2022 | Started M.S. in Computer Science at LMU",
+  },
+  {
+    text: "May 2023 - Aug 2023 | Engineering Manager Intern at Develop for Good",
+  },
+  {
+    text: "Aug 2023 - Nov 2023 | Student Software Developer at Willette Lab of Applied Ecology",
+  },
+  {
+    text: "Aug 2023 - Oct 2023 | Computer Science Teaching Assistant at LMU",
+  },
+  {
+    text: "Oct 2023 - Jan 2024 | Software Engineer Intern at Develop for Good",
+  },
+  {
+    text: "Oct 2023 - May 2024 | Graduate Research Assistant for Embedded Software at LMU",
+  },
+  {
+    text: "Jan 2024 - May 2024 | Software Engineer Intern at PropRise (YC S23)",
+  },
+  {
+    text: "May 2024 - Graduated with M.S. in Computer Science from LMU",
+  },
+  {
+    text: "August 2024 - Starting Software Engineer role at Fortune 500 company",
+  },
+];
+
+const people = [
+  {
+    id: 1,
+    name: "Github",
+    designation: "@AaronFlore",
+    image: "/github.png",
+  },
+  {
+    id: 3,
+    name: "Email",
+    designation: "aaronfloreani@gmail.com",
+    image: "/gmail.png",
+  },
+  {
+    id: 2,
+    name: "LinkedIn",
+    designation: "Aaron Floreani",
+    image: "/linkedin.png",
+  },
+];
 
 export default function Home() {
+  const [loading, setLoading] = useState(false);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
+    <>
+      <WavyBackground className="max-w-4xl mx-auto pb-40">
+        <p className="text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
+          Hi, I'm Aaron Floreani
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+        <p className="text-base md:text-lg mt-4 text-white font-normal inter-var text-center">
+          Welcome to my portfolio! I'm a full-stack software engineer based in
+          Los Angeles, CA.
+        </p>
+      </WavyBackground>
+      <div className="w-full h-[20vh] flex items-center justify-center">
+        {/* Core Loader Modal */}
+        <Loader
+          loadingStates={loadingStates}
+          loading={loading}
+          duration={2000}
         />
+        <button
+          onClick={() => setLoading(true)}
+          className="relative inline-flex h-16 overflow-hidden rounded-full p-[2px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+        >
+          <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+          <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-lg font-medium text-white backdrop-blur-3xl">
+            View my Work Experience
+          </span>
+        </button>
+
+        {loading && (
+          <button
+            className="fixed top-4 right-4 text-black dark:text-white z-[120]"
+            onClick={() => setLoading(false)}
+          >
+            <IconSquareRoundedX className="h-10 w-10" />
+          </button>
+        )}
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
+      <span className="inline-flex h-full w-full cursor-pointer items-center justify-center mt-64 mb-4 bg-slate-950 px-6 py-3 text-5xl font-medium text-white backdrop-blur-3xl">
+        Projects
+      </span>
+      <div className="flex justify-center mt-4 mb-16">
         <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href="https://lyrichero.onrender.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
+          <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-4 p-4 relative h-[30rem]">
+            <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
+            <EvervaultCard text="LyricHero" />
+            <h2 className="dark:text-white text-black mt-4 text-sm font-light">
+              In this web app, users type along to the synchronized lyrics of
+              songs for a fun way to practice typing speed and accuracy.
+            </h2>
+            <div className="flex space-x-2">
+              <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+                Vue.js
+              </p>
+              <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+                JavaScript
+              </p>
+            </div>
+          </div>
         </a>
-
         <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href="https://apps.apple.com/us/app/ascot-app/id6477841935"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
+          <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-4 p-4 relative h-[30rem]">
+            <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
+            <EvervaultCard text="Ascot" />
+            <h2 className="dark:text-white text-black mt-4 text-sm font-light">
+              This mobile app allows volunteers and researchers to track the
+              survivability of 400 trees in LA's Ascot Hills Park via QR codes,
+              scaling sustainability research.
+            </h2>
+            <div className="flex space-x-2">
+              <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+                React Native
+              </p>
+              <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+                Firebase
+              </p>
+              <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+                JavaScript
+              </p>
+            </div>
+          </div>
         </a>
-
         <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href="https://github.com/AaronFlore/Finetuning-Llama2-Review-Summarizer"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
+          <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start max-w-sm mx-4 p-4 relative h-[30rem]">
+            <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
+            <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
+            <EvervaultCard text="LLaMA 2 Finetuning" />
+            <h2 className="dark:text-white text-black mt-4 text-sm font-light">
+              This project demonstrates how to fine-tune LLaMA 2 for a specific
+              use case, such as summarizing user reviews for amazon products
+              into a single sentence.
+            </h2>
+            <div className="flex space-x-2">
+              <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+                Jupyter Notebook
+              </p>
+              <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+                Meta Llama 2
+              </p>
+              <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
+                Python
+              </p>
+            </div>
+          </div>
         </a>
       </div>
-    </main>
+      <div className="flex flex-col items-center justify-center mt-64 mb-10 w-full">
+        <div className="flex flex-row items-center justify-center w-full">
+          <AnimatedTooltip items={people} />
+        </div>
+        <h2 className="dark:text-white text-black mt-4 text-sm font-light">
+          Connect with me
+        </h2>
+      </div>
+    </>
   );
 }
