@@ -43,18 +43,21 @@ const people = [
     name: "Github",
     designation: "@AaronFlore",
     image: "/github.png",
-  },
-  {
-    id: 3,
-    name: "Email",
-    designation: "aaronfloreani@gmail.com",
-    image: "/gmail.png",
+    link: "https://github.com/AaronFlore",
   },
   {
     id: 2,
+    name: "Email",
+    designation: "aaronfloreani@gmail.com",
+    image: "/gmail.png",
+    link: "mailto:aaronfloreani@gmail.com",
+  },
+  {
+    id: 3,
     name: "LinkedIn",
     designation: "Aaron Floreani",
     image: "/linkedin.png",
+    link: "https://www.linkedin.com/in/aaron-floreani/",
   },
 ];
 
